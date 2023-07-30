@@ -1,0 +1,256 @@
+:root {
+    --bg1: #e0e0e0;
+    --bg2: #100f12;
+    --orange: #ffc207;
+    --dark-purple: rgb(64, 1, 100);
+  }
+
+$day-color-first: rgba(241,223,102,1);
+$day-color-second: rgba(83,155,210,1);
+
+$night-color-first: rgba(0, 10, 120, 1);
+$night-color-second: rgba(23, 173, 209, 1);
+
+$orange: rgb(250, 188, 57);  
+
+@mixin gradient-background($degree, $first-color, $second-color) {
+    background: $first-color;
+    background: linear-gradient($degree + deg, $first-color, 50%, $second-color 100%);
+}
+
+
+body {
+    @include gradient-background(0, $day-color-first, $day-color-second);
+    height: 100vh;
+    transition: all 250ms ease-in;
+
+}
+
+.day-night-switcher__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include gradient-background(0, $day-color-first, $day-color-second);
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    z-index: -1;
+  }
+  
+
+.main-container {
+
+    width: 100%;
+    height: 100rem;
+}
+
+// DAY NIGHT SWITCHER
+
+$switcher-width: 120px;
+
+#toggle_checkbox {
+    display: none;
+  }
+  
+  
+  label {
+    border: 1px solid black;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: $switcher-width;
+    height: calc($switcher-width / 3);
+    margin: 0 auto;
+    // background-color: rgb(241, 223, 102);
+    background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
+    border-radius: 40px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: background-image 5s ease;
+    overflow: hidden;
+  }
+  
+  input:checked ~ label {
+    //   background-color: rgb(0, 10, 120);
+      background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
+  }
+  
+  label::before {
+    display: block;
+    position: relative;
+    background-size:cover;
+    background-image: url("data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='17.5' cy='17.5' r='17' fill='%23FABC39' stroke='black'/%3E%3C/svg%3E%0A");    background-size: cover; 
+    content: '';
+     top: calc($switcher-width / 20);
+    left: calc($switcher-width / 15);
+    height: calc($switcher-width / 4);
+     width: calc($switcher-width / 4);
+
+    }
+
+input:not(:checked) ~ label::before {
+    animation: sun-up 2s ease-out;
+    animation-fill-mode: forwards;
+}
+
+
+// input:focus  ~ label::after {
+//     animation: moon-up 2s ease-out;
+//     animation-fill-mode: forwards;
+// }
+
+  
+  input:checked ~ label::before {
+    animation: sun-down 2s ease-out;
+    animation-fill-mode: forwards;
+  }
+  input:checked ~ label::after {
+    animation: moon-down 2s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  label::after {
+    display: block;
+    position: relative;
+    content: '';
+    top: -25px;
+    left: 80px;
+    height: calc($switcher-width / 4);
+    width: calc($switcher-width / 4);
+    background-size:cover;
+    background-image:  url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
+  }
+
+  
+  @keyframes sun-down {
+    0% { top: calc($switcher-width / 20); }
+    10% { top: 3px; }
+    100% { top: 90px; }
+  }
+  
+//   @keyframes moon-down {
+//     0% { top: -82px; }
+//     75% { top: 15px; }
+//     100% { top: calc($switcher-width / 20); }
+//   }
+
+  @keyframes sun-up {
+    0% { top: 90px; }
+    80% { top: 3px; }
+    100% { top: calc($switcher-width / 20); }
+  }
+  
+  @keyframes moon-up {
+    0% { top: calc($switcher-width / 15); }
+    10% { top: 15px; }
+    100% { top: -82px; }
+  }
+
+// TOGGLE
+
+
+
+
+
+
+
+
+
+
+:root {
+    /** sunny side **/
+    --blue-background: #C2E9F6;
+    --blue-border: #72cce3;
+    --blue-color: #96dcee;
+    --yellow-background: #fffaa8;
+    --yellow-border: #f5eb71;
+    /** dark side **/
+    --indigo-background: #808fc7;
+    --indigo-border: #5d6baa;
+    --indigo-color: #6b7abb;
+    --gray-border: #e8e8ea;
+    --gray-dots: #e8e8ea;
+    /** general **/
+    --white: #fff;
+  }
+  
+$switcher-width: 75px;
+ 
+  
+  .toggle--checkbox {
+    display: none;
+  }
+
+
+  .toggle--checkbox:checked + .toggle--label:before {
+    background: whitesmoke;
+    animation-name: switch;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+  }
+
+
+  .toggle--label {
+    width: $switcher-width;
+    height: calc($switcher-width / 2);
+    @include gradient-background(45, $day-color-first, $day-color-second);
+    border-radius: 100px;
+    border: 1px solid black;
+    display: flex;
+    position: relative;
+    transition: all 350ms ease-in;
+  }
+
+  .toggle--checkbox:checked + .toggle--label {
+    @include gradient-background(45, $night-color-first, $night-color-second);
+  }
+
+  .toggle--label:before {
+    animation-name: reverse;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    transition: all 350ms ease-in;
+    content: "";
+    width: calc($switcher-width / 3);
+    max-width: calc($switcher-width / 3);
+    height: calc($switcher-width / 3);
+    border: 1px solid black;
+    top: calc($switcher-width / 16);
+    left: 200px;
+    position: absolute;
+    border-radius: calc($switcher-width / 3);
+    background: $orange;
+  }
+
+
+  
+  @keyframes switch {
+    0% {
+      left: 4px;
+    }
+    60% {
+      left: 4px;
+      width: calc($switcher-width / 3);
+    }
+    100% {
+      left: calc($switcher-width / 1.8);
+      width: calc($switcher-width / 3);
+    }
+  }
+
+  @keyframes reverse {
+    0% {
+        left: calc($switcher-width / 1.8);
+      width: calc($switcher-width / 3);
+    }
+    60% {
+      left: calc($switcher-width / 1.8);
+      width: calc($switcher-width / 3);
+    }
+    100% {
+      left: 4px;
+    }
+  }
