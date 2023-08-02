@@ -44,7 +44,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100rem;
   padding: 40px 80px;
 }
 
@@ -52,6 +51,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.noise {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 35%;
+  background-image: url("../assets/noise.png");
+  z-index: 3;
 }
 
 .sound-button__speaker {
@@ -177,6 +186,7 @@ label::after {
 }
 .main-section {
   display: flex;
+  margin-top: 40px;
 }
 
 .left-section {
@@ -285,6 +295,59 @@ label::after {
   margin: 0px 14px 0 20px;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.field-section {
+  overflow: hidden;
+  top: -500px;
+}
+.field-section__deer-element {
+  position: relative;
+  top: 200px;
+  left: 900px;
+  width: 750px;
+  stroke-width: 2px;
+}
+
+.flying-mushroom__element {
+  position: absolute;
+  width: 40px;
+  top: 550px;
+  left: 150px;
+}
+
+.footer-container {
+  background-color: white;
+  top: -20px;
+  position: relative;
+  padding: 15px 20px;
+  padding-inline-start: 0px;
+  border-top: 1.5px solid black;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  font-weight: 1000;
+}
+.footer-menu__link {
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-decoration: none;
+}
+
+.moving-cloud-container {
+  position: relative;
+}
+.moving-cloud-container__element {
+  position: absolute;
+  left: 1200px;
+  top: 300px;
+  width: 400px;
+  stroke: black;
+  stroke-width: 1px;
+  fill: white;
 }
 
 /*# sourceMappingURL=styles.css.map */
