@@ -27,6 +27,7 @@ const path = [
     { x: 700, y: -250 },
 ]
 
+
 t1.to(flyingMushroom1, {
     duration: 20,
     motionPath: {
