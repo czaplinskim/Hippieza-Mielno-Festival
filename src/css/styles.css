@@ -190,7 +190,7 @@ label::after {
 }
 
 .left-section {
-  margin-left: 200px;
+  margin-left: 170px;
 }
 
 .header {
@@ -309,11 +309,69 @@ label::after {
   stroke-width: 2px;
 }
 
+.buy-ticket-section {
+  width: 350px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 200px;
+  top: 500px;
+  transform: rotate(8deg);
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+.buy-ticket-section__yellow-shape {
+  position: absolute;
+  width: 85%;
+}
+.buy-ticket-section__dark-shape {
+  position: absolute;
+}
+.buy-ticket-section:hover {
+  transform: rotate(0deg);
+}
+
+.social-media-section {
+  width: 350px;
+  height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 150px;
+  top: 570px;
+  transform: rotate(-5deg);
+}
+.social-media-section__blue-shape {
+  position: absolute;
+  background-color: #93D8FF;
+  width: 85%;
+  height: 70%;
+  border-radius: 100px;
+  border: 1px solid black;
+}
+.social-media-section__dark-shape {
+  position: absolute;
+  background-color: #17ADD1;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  border: 1px solid black;
+}
+
 .flying-mushroom__element {
   position: absolute;
   width: 40px;
+  overflow: hidden;
+}
+.flying-mushroom__element--left {
   top: 550px;
-  left: 150px;
+  left: -150px;
+}
+.flying-mushroom__element--right {
+  top: 850px;
+  right: 150px;
 }
 
 .footer-container {
@@ -343,7 +401,7 @@ label::after {
 .moving-cloud-container__element {
   position: absolute;
   left: 1200px;
-  top: 300px;
+  top: 270px;
   width: 400px;
   stroke: black;
   stroke-width: 1px;
