@@ -379,10 +379,14 @@ input:focus  ~ label::after {
     justify-content: center;
     align-items: center;
     left: 200px;
-    top: 500px;
-    transform: rotate(8deg);
+    top: 350px;
     z-index: 1;
-    transition: transform 0.5s ease;
+    transform: rotate(8deg);
+
+    &:hover {
+        animation: buy-ticket-section-rotate 1s forwards;
+       
+    }
 
     &__yellow-shape {
         position: absolute;
@@ -393,16 +397,96 @@ input:focus  ~ label::after {
         position: absolute;
     }
 
-    &:hover {
+    &__logo {
+        width: 120px;
+    }
+
+    &__headline {
+        color: white;
+        margin-bottom: 5px;
+        font-size: 24px;
+        font-weight: 1000;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+        &::before {
+            content: url("../assets/SVG/polygon_bullet.svg");
+            position: relative;
+            top: -5px;
+            left: -5px;
+        }
+
+        &::after {
+            content: url("../assets/SVG/polygon_bullet_right.svg");
+            position: relative;
+            top: -5px;
+            left: 5px;
+        }
+        
+    }
+
+    &__inner {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+   
+
+}
+
+@keyframes buy-ticket-section-rotate {
+    0% {
+        transform: rotate(8deg);
+    }
+
+
+    100% {
         transform: rotate(0deg);
-       
+
     }
 
 }
 
+@keyframes buy-ticket-section-move {
+    0% {
+        transform: translateY(0) rotate(8deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(8deg);
+        z-index: -1;
+
+    }
+
+    100% {
+        transform: translateY(0px) rotate(8deg);
+        z-index: -1;
+    }
+}
+
+@keyframes buy-ticket-section-reverse-move {
+    0% {
+        transform: translateY(0) rotate(8deg);
+        z-index: -1;
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(8deg);
+        z-index: -1;
+
+    }
+
+    100% {
+        transform: translateY(0px) rotate(8deg);
+        z-index: 1;
+    }
+}
+
 
 .social-media-section {
-    width: 350px;
+    width: 370px;
     height: 150px;
     position: relative;
     display: flex;
@@ -411,6 +495,7 @@ input:focus  ~ label::after {
     left: 150px;
     top: 570px;
     transform: rotate(-5deg);
+    transition: transform 0.5s ease;
 
     &__blue-shape {
         position: absolute;
@@ -429,6 +514,23 @@ input:focus  ~ label::after {
         border-radius: 100px;
         border: 1px solid black;
     }
+
+    &:hover {
+        transform: rotate(0deg) !important;
+    }
+
+    &:hover + .buy-ticket-section {
+
+        animation: buy-ticket-section-move 1s forwards;
+
+    }
+
+    &:not(:hover) + .buy-ticket-section {
+
+        animation: buy-ticket-section-reverse-move 1s forwards;
+
+    }
+
 
 }
 
@@ -460,7 +562,7 @@ input:focus  ~ label::after {
 .footer-container {
     
     background-color: white;
-    top: -20px;
+    top: -40px;
     position: relative;
     padding: 15px 20px;
     padding-inline-start: 0px;

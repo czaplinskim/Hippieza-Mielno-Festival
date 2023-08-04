@@ -316,10 +316,12 @@ label::after {
   justify-content: center;
   align-items: center;
   left: 200px;
-  top: 500px;
-  transform: rotate(8deg);
+  top: 350px;
   z-index: 1;
-  transition: transform 0.5s ease;
+  transform: rotate(8deg);
+}
+.buy-ticket-section:hover {
+  animation: buy-ticket-section-rotate 1s forwards;
 }
 .buy-ticket-section__yellow-shape {
   position: absolute;
@@ -328,12 +330,73 @@ label::after {
 .buy-ticket-section__dark-shape {
   position: absolute;
 }
-.buy-ticket-section:hover {
-  transform: rotate(0deg);
+.buy-ticket-section__logo {
+  width: 120px;
+}
+.buy-ticket-section__headline {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: 1000;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.buy-ticket-section__headline::before {
+  content: url("../assets/SVG/polygon_bullet.svg");
+  position: relative;
+  top: -5px;
+  left: -5px;
+}
+.buy-ticket-section__headline::after {
+  content: url("../assets/SVG/polygon_bullet_right.svg");
+  position: relative;
+  top: -5px;
+  left: 5px;
+}
+.buy-ticket-section__inner {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+@keyframes buy-ticket-section-rotate {
+  0% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes buy-ticket-section-move {
+  0% {
+    transform: translateY(0) rotate(8deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(8deg);
+    z-index: -1;
+  }
+  100% {
+    transform: translateY(0px) rotate(8deg);
+    z-index: -1;
+  }
+}
+@keyframes buy-ticket-section-reverse-move {
+  0% {
+    transform: translateY(0) rotate(8deg);
+    z-index: -1;
+  }
+  50% {
+    transform: translateY(-40px) rotate(8deg);
+    z-index: -1;
+  }
+  100% {
+    transform: translateY(0px) rotate(8deg);
+    z-index: 1;
+  }
+}
 .social-media-section {
-  width: 350px;
+  width: 370px;
   height: 150px;
   position: relative;
   display: flex;
@@ -342,6 +405,7 @@ label::after {
   left: 150px;
   top: 570px;
   transform: rotate(-5deg);
+  transition: transform 0.5s ease;
 }
 .social-media-section__blue-shape {
   position: absolute;
@@ -358,6 +422,15 @@ label::after {
   height: 100%;
   border-radius: 100px;
   border: 1px solid black;
+}
+.social-media-section:hover {
+  transform: rotate(0deg) !important;
+}
+.social-media-section:hover + .buy-ticket-section {
+  animation: buy-ticket-section-move 1s forwards;
+}
+.social-media-section:not(:hover) + .buy-ticket-section {
+  animation: buy-ticket-section-reverse-move 1s forwards;
 }
 
 .flying-mushroom__element {
@@ -376,7 +449,7 @@ label::after {
 
 .footer-container {
   background-color: white;
-  top: -20px;
+  top: -40px;
   position: relative;
   padding: 15px 20px;
   padding-inline-start: 0px;
