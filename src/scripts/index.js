@@ -8,6 +8,7 @@ gsap.to(cloudToMove, {
     duration: 6
 })
 
+
 const flyingMushroom1 = document.querySelector('#flyingMushroom1')
 const flyingMushroom2 = document.querySelector('#flyingMushroom2')
 
