@@ -1,13 +1,12 @@
 const cloudToMove = document.querySelector("#cloudToMove")
 
 gsap.to(cloudToMove, { 
-    x: -200,
+    x: 400,
     ease: "none",
     repeat: -1,
     yoyo: true,
     duration: 6
 })
-
 
 const flyingMushroom1 = document.querySelector('#flyingMushroom1')
 const flyingMushroom2 = document.querySelector('#flyingMushroom2')
@@ -69,3 +68,31 @@ t2.to(flyingMushroom2, {
         autoRotate: 90
     }
 })
+
+
+// GRADIENT
+
+const checkbox = document.getElementById('toggle_checkbox');
+const element = document.querySelector('body');
+
+
+function animateGradientColors() {
+  if (checkbox.checked) {
+
+    gsap.to(element, {
+      background: "linear-gradient(0, rgba(23, 173, 209, 1) 50%, rgba(0, 10, 120, 1) 100%)", 
+      duration: 1, 
+      ease: "power1.inOut" 
+    });
+  } else {
+    
+    gsap.to(element, {
+      background: "linear-gradient(0, rgba(241,223,102,1) 50%, rgba(83,155,210,1) 100%)", 
+      duration: 1, 
+      ease: "power1.inOut" 
+    });
+  }
+}
+
+
+checkbox.addEventListener('change', animateGradientColors);
