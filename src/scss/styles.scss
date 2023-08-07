@@ -47,7 +47,6 @@ $orange: rgb(250, 188, 57);
 
 body {
     @include gradient-background(0, $day-color-first, $day-color-second);
-    transition: all 250ms ease-in;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;

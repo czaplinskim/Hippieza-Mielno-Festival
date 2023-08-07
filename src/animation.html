@@ -11,12 +11,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="scripts/index.js" type="module"></script>
 
-    <style>
+ <style>
 
 
-.eye {
-  height: 300px;
-  width: 300px;
+
+.eye-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: "linear-gradient(0, rgba(23, 173, 209, 1) 50%, rgba(0, 10, 120, 1) 100%)",;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+
 }
 
 #eye-empty {
@@ -64,60 +73,222 @@
 
 }
 
+#eye-closed-top, #eye-closed-bottom {
+    fill:  #3FA396;
+    stroke: black;
+    stroke-width: 1;
+}
+
     </style>
     
 </head>
 <body>
 
-  <div>
-                <svg class="eye" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <div class="eye-container">
+                <svg id="eye" class="eye" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
                 
+                    <defs>
+                        <mask id="circle-mask">
+
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+     
+                            <circle id="circle-mask-element" cx="100" cy="100" r="0" fill="black" />
+                        </mask>
+                    </defs>
 
                     <path 
                         id="eye3" 
                         d="M30,100 Q100,0 170,100 
-                        M30,100 Q100,200 170,100" fill=""
+                        M30,100 Q100,200 170,100" mask="url(#circle-mask)" 
                         />
-                    <path 
-                        id="eye2" 
-                        d="M30,100 Q100,20 170,100 
-                        M30,100 Q100,180 170,100" fill=""
-                        />
-                   
-                        <circle
-                        id="pupil1"
-                        cx="100" cy="100" r="20" />
 
-                        <circle
-                        id="pupil2"
-                        cx="100" cy="100" r="12" />
-
-                        <circle
-                        id="pupil3"
-                            cx="90" cy="110" r="5" />
-
-                            <path 
-                        id="eye-empty" 
-                        d="M30,100 Q100,50 170,100 
-                        M30,100 Q100,150 170,100" 
-                        
-                        />
 
                         <path 
                         id="eye1" 
-                        d="M30,100 Q100,50 170,100 
-                        M30,100 Q100,150 170,100" 
+                        d="M30,100 Q100,40 170,100 M30,100 Q100,160 170,100"
+                        mask="url(#circle-mask)"  
                         />
+        
+                   
+                        <circle
+                        id="pupil1"
+                        cx="100" cy="100" r="20"
+                        mask="url(#circle-mask)"  />
+
+                        <circle
+                        id="pupil2"
+                        cx="100" cy="100" r="12"
+                        mask="url(#circle-mask)"  />
+
+                        <circle
+                        id="pupil3"
+                            cx="90" cy="110" r="5"
+                            mask="url(#circle-mask)"  />
+
+                           
+                            <path 
+                            id="eye-closed-top" 
+                              id="eye1" 
+        d="M30,100 Q100,20 170,100 C170,100 100,50 30,100 Z" 
+                            
+        mask="url(#circle-mask)" />
+
+                            <path 
+                            id="eye-closed-bottom" 
+                              id="eye1" 
+        d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z" 
+        mask="url(#circle-mask)" />
+                      
+       
                         
                 </svg>
 
                 </div>
   
 <script>
+
+    const t2 = gsap.timeline()
+    .to("#pupil2", {
+        duration: 0.5,
+        repeat: -1,
+        yoyo: true,
+        attr: {
+            r: 11.5
+        }
+    })
+
     const tl = gsap.timeline()
-.to("#eye1", {attr:{
-  d:"M30,100 Q100, 100 170,100 M30,100 Q100, 100 170,100"
+.to("#eye-closed-top", {
+    duration: 0.15,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
 }})
+.to("#eye-closed-bottom", {
+    duration: 0.15,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
+}}, "<")
+.to(["#pupil1", "#pupil2"], {
+    duration: 0.5,
+    delay: 0.2,
+    repeat: 0,
+    attr:{
+        cx:"70"  
+}})
+.to("#eye-closed-top", {
+duration: 0.2,
+    repeat: 0,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 90,50 30,100 Z"
+}}, "<")
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 80,150 30,100 Z"  
+}}, "<")
+.to(["#pupil1", "#pupil2"], {
+    duration: 0.2,
+    repeat: 0,
+    attr:{
+        cy:"105", 
+        cx:"70"  
+}},1.5)
+.to("#eye-closed-top", {
+duration: 0.2,
+    repeat: 0,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,60 30,100 Z"
+}}, "<")
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"  
+}}, "<")
+.to("#eye-closed-top", {
+    duration: 0.2,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
+}})
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
+}}, "<")
+.to(["#pupil1", "#pupil2"], {
+    duration: 0.5,
+    delay: 0.2,
+    repeat: 0,
+    attr:{
+        cy:"110", 
+        cx:"100"   
+}})
+.to("#eye-closed-top", {
+    duration: 0.2,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
+}})
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 1,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
+}}, "<")
+.to(["#pupil1", "#pupil2"], {
+    duration: 0.5,
+    delay: 0.2,
+    repeat: 0,
+    attr:{
+        cy:"100", 
+        cx:"100"   
+}})
+.to("#eye-closed-top", {
+duration: 0.5,
+    repeat: 0,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,50 30,100 Z"
+}}, "<")
+.to("#eye", {
+    duration: 0.5,
+    ease: "none",
+delay: 1,
+repeat: 0,
+    scale: 100, // Nowa skala elementu SVG (w tym przypadku powiększamy dwukrotnie)
+    transformOrigin: "center",
+})
+.to("#circle-mask-element", {
+duration: 0.5,
+delay: 0,
+repeat: 0,
+attr:{
+  r: 10
+}
+}, "<")
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 </body>
