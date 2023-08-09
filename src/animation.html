@@ -25,6 +25,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
+    -webkit-mask-image: radial-gradient(circle at center, transparent 0px, black 0px);
+    mask-image: radial-gradient(circle at center, transparent 50px, black 51px);
 
 }
 
@@ -257,27 +259,71 @@ duration: 0.2,
         cx:"100"   
 }})
 .to("#eye-closed-top", {
-duration: 0.5,
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
+}})
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
+}}, "<")
+.to(["#pupil1", "#pupil2", "#pupil3", "#eye1" ], {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    opacity: 0
+})
+.to("#eye-closed-top", {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,100 170,100 C170,100 100,100 30,100 Z"
+}})
+.to("#eye-closed-bottom", {
+    duration: 0.2,
+    repeat: 0,
+    yoyo: true,
+    attr:{
+  d:"M30,100 Q100,100 170,100 C170,100 100,100 30,100 Z" 
+}}, "<")
+.to("#eye3", {
+duration: 0.2,
     repeat: 0,
     attr:{
-  d:"M30,100 Q100,20 170,100 C170,100 100,50 30,100 Z"
+  d:"M30,100 Q100,100 170,100 M30,100 Q100,100 170,100"
 }}, "<")
-.to("#eye", {
-    duration: 0.5,
-    ease: "none",
-delay: 1,
-repeat: 0,
-    scale: 100, // Nowa skala elementu SVG (w tym przypadku powiększamy dwukrotnie)
-    transformOrigin: "center",
-})
-.to("#circle-mask-element", {
-duration: 0.5,
-delay: 0,
-repeat: 0,
-attr:{
-  r: 10
-}
-}, "<")
+.to(".eye-container", {
+duration: 0.4,
+    repeat: 0,
+    delay: 0.2,
+    fill: "none",
+    css:{
+    '-webkit-mask-image': 'radial-gradient(circle at center, transparent 1000px, black 1000px)',
+    'mask-image': 'radial-gradient(circle at center, transparent 50px, black 51px)'
+
+}})
+// .to("#eye", {
+//     duration: 0.5,
+//     ease: "none",
+// delay: 1,
+// repeat: 0,
+//     scale: 100, // Nowa skala elementu SVG (w tym przypadku powiększamy dwukrotnie)
+//     transformOrigin: "center",
+// })
+// .to("#circle-mask-element", {
+// duration: 0.5,
+// delay: 0,
+// repeat: 0,
+// attr:{
+//   r: 10
+// }
+// }, "<")
 
 
 

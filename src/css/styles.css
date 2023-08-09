@@ -14,7 +14,7 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
-img, picture, video, canvas, svg {
+img, picture, video, canvas {
   display: block;
   max-width: 100%;
 }
@@ -34,7 +34,6 @@ p, h1, h2, h3, h4, h5, h6 {
 body {
   background: rgb(241, 223, 102);
   background: linear-gradient(0deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
-  transition: all 250ms ease-in;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
@@ -63,14 +62,32 @@ body {
   z-index: 3;
 }
 
+.sound-button {
+  height: 70px;
+}
+.sound-button-container {
+  position: absolute;
+}
 .sound-button__speaker {
-  width: 30px;
+  width: 36px;
   margin: 0 auto;
 }
 .sound-button__speaker-cloud {
-  width: 120px;
+  width: 144px;
   position: relative;
   top: -15px;
+}
+.sound-button__note-1 {
+  position: relative;
+  width: 2px;
+  top: -45px;
+  left: 75px;
+}
+.sound-button__note-2 {
+  position: relative;
+  width: 3px;
+  top: -50px;
+  left: 74px;
 }
 
 #toggle_checkbox {
@@ -81,9 +98,9 @@ label {
   border: 1px solid black;
   display: block;
   width: 80px;
-  height: 26.6666666667px;
+  height: 30px;
   background-color: rgb(241, 223, 102);
-  background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
+  background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
   border-radius: 40px;
   cursor: pointer;
   transition: background-image 5s ease;
@@ -92,11 +109,7 @@ label {
 }
 
 input:checked ~ label {
-  background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
-}
-
-input:checked body {
-  background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
+  background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
 }
 
 label::before {
@@ -112,13 +125,20 @@ label::before {
   width: 20px;
 }
 
-input:not(:checked) ~ label::before {
-  animation: sun-up 2s ease-out;
-  animation-fill-mode: forwards;
+label::after {
+  display: block;
+  position: relative;
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
+  content: "";
+  top: -16px;
+  left: 53px;
+  height: 20px;
+  width: 20px;
 }
 
-input:focus ~ label::after {
-  animation: moon-up 2s ease-out;
+input:not(:checked) ~ label::before {
+  animation: sun-up 2s ease-out;
   animation-fill-mode: forwards;
 }
 
@@ -127,21 +147,14 @@ input:checked ~ label::before {
   animation-fill-mode: forwards;
 }
 
-input:checked ~ label::after {
-  animation: moon-down 2s ease-out;
+input:not(:checked) ~ label::after {
+  animation: moon-up 2s ease-out;
   animation-fill-mode: forwards;
 }
 
-label::after {
-  display: block;
-  position: relative;
-  content: "";
-  top: -25px;
-  left: 80px;
-  height: 20px;
-  width: 20px;
-  background-size: cover;
-  background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
+input:checked ~ label::after {
+  animation: moon-down 2s ease-out;
+  animation-fill-mode: forwards;
 }
 
 @keyframes sun-down {
@@ -160,10 +173,10 @@ label::after {
     top: -82px;
   }
   75% {
-    top: 15px;
+    top: -17px;
   }
   100% {
-    top: 4px;
+    top: -16px;
   }
 }
 @keyframes sun-up {
@@ -179,10 +192,10 @@ label::after {
 }
 @keyframes moon-up {
   0% {
-    top: 5.3333333333px;
+    top: -16px;
   }
   10% {
-    top: 15px;
+    top: -17px;
   }
   100% {
     top: -82px;
@@ -403,7 +416,7 @@ label::after {
 }
 .social-media-section {
   width: 370px;
-  height: 150px;
+  height: 160px;
   position: relative;
   display: flex;
   justify-content: center;

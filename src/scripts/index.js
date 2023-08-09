@@ -1,3 +1,5 @@
+gsap.registerPlugin(MotionPathPlugin);
+
 const cloudToMove = document.querySelector("#cloudToMove")
 
 gsap.to(cloudToMove, { 
@@ -7,7 +9,6 @@ gsap.to(cloudToMove, {
     yoyo: true,
     duration: 6
 })
-
 
 const flyingMushroom1 = document.querySelector('#flyingMushroom1')
 const flyingMushroom2 = document.querySelector('#flyingMushroom2')
@@ -33,7 +34,6 @@ const path = [
     { x: 1100, y: -450 },
     { x: 0, y: 0 },
 ]
-
 
 const pathTwo = [
     { x: 0, y: 0 },

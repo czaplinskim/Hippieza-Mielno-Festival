@@ -15,7 +15,7 @@
     -webkit-font-smoothing: antialiased;
     font-family: 'DM Sans', sans-serif;
   }
-  img, picture, video, canvas, svg {
+  img, picture, video, canvas {
     display: block;
     max-width: 100%;
   }
@@ -81,9 +81,15 @@ body {
 
 // SOUND BUTTON
 
-$sound-button-speaker-width: 30px;
+$sound-button-speaker-width: 36px;
 
 .sound-button {
+
+    height: 70px;
+
+    &-container {
+        position: absolute;
+    }
 
     &__speaker {
         width: $sound-button-speaker-width;
@@ -94,6 +100,20 @@ $sound-button-speaker-width: 30px;
         width: $sound-button-speaker-width * 4;
         position: relative;
         top: -15px;
+    }
+
+    &__note-1 {
+        position: relative;
+        width: 2px;
+        top: -45px;
+        left: 75px;
+    }
+
+    &__note-2 {
+        position: relative;
+        width: 3px;
+        top: -50px;
+        left: 74px;
     }
 
 }
@@ -111,15 +131,10 @@ $switcher-width: 80px;
   label {
     border: 1px solid black;
     display: block;
-    // position: absolute;
-    // top: 50%;
-    // right: 0;
-    // left: 0;
-    // margin: 0 auto;
     width: $switcher-width;
-    height: calc($switcher-width / 3);
+    height: 30px;
     background-color: rgb(241, 223, 102);
-    background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
+    background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
     border-radius: 40px;
     cursor: pointer;
     transition: background-image 5s ease;
@@ -128,14 +143,10 @@ $switcher-width: 80px;
   }
   
   input:checked ~ label {
-    //   background-color: rgb(0, 10, 120);
-      background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
+      
+      background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
   }
 
-  input:checked body {
-    //   background-color: rgb(0, 10, 120);
-      background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
-  }
   
   label::before {
     display: block;
@@ -150,14 +161,20 @@ $switcher-width: 80px;
 
     }
 
+    label::after {
+        display: block;
+        position: relative;
+        background-size:cover;
+        background-image:  url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
+        content: '';
+        top: -16px;
+        left: 53px;
+        height: calc($switcher-width / 4);
+        width: calc($switcher-width / 4);
+      }
+
 input:not(:checked) ~ label::before {
     animation: sun-up 2s ease-out;
-    animation-fill-mode: forwards;
-}
-
-
-input:focus  ~ label::after {
-    animation: moon-up 2s ease-out;
     animation-fill-mode: forwards;
 }
 
@@ -165,23 +182,20 @@ input:focus  ~ label::after {
   input:checked ~ label::before {
     animation: sun-down 2s ease-out;
     animation-fill-mode: forwards;
+
   }
+
+  input:not(:checked)  ~ label::after {
+    animation: moon-up 2s ease-out;
+    animation-fill-mode: forwards;
+}
+
   input:checked ~ label::after {
     animation: moon-down 2s ease-out;
     animation-fill-mode: forwards;
   }
 
-  label::after {
-    display: block;
-    position: relative;
-    content: '';
-    top: -25px;
-    left: 80px;
-    height: calc($switcher-width / 4);
-    width: calc($switcher-width / 4);
-    background-size:cover;
-    background-image:  url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
-  }
+  
 
   
   @keyframes sun-down {
@@ -192,8 +206,8 @@ input:focus  ~ label::after {
   
   @keyframes moon-down {
     0% { top: -82px; }
-    75% { top: 15px; }
-    100% { top: calc($switcher-width / 20); }
+    75% { top: -17px }
+    100% { top: -16px }
   }
 
   @keyframes sun-up {
@@ -203,8 +217,8 @@ input:focus  ~ label::after {
   }
 
   @keyframes moon-up {
-    0% { top: calc($switcher-width / 15); }
-    10% { top: 15px; }
+    0% { top: -16px }
+    10% { top: -17px }
     100% { top: -82px; }
   }
 // MAIN SECTION
@@ -490,7 +504,7 @@ input:focus  ~ label::after {
 
 .social-media-section {
     width: 370px;
-    height: 150px;
+    height: 160px;
     position: relative;
     display: flex;
     justify-content: center;
