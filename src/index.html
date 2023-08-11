@@ -33,11 +33,12 @@
     mask-image: radial-gradient(circle at center, transparent 0px, black 0px);
 
 }
-        
+
+      
         #eye-empty {
           fill: none;
           stroke: black;
-          stroke-width: 1;
+          stroke-width: 10;
         }
         
         #eye1 {
@@ -90,7 +91,7 @@
 </head>
 <body>
 
-    <audio autoplay src="assets/audio/tapes.mp3"></audio>
+    <audio src="assets/audio/tapes.mp3"></audio>
 
     <div class="eye-container">
 
@@ -127,6 +128,8 @@
                     cx="90" cy="110" r="5"
   />
 
+
+
                    
                     <path 
                     id="eye-closed-top" 
@@ -140,12 +143,19 @@ d="M30,100 Q100,20 170,100 C170,100 100,50 30,100 Z"
                       id="eye1" 
 d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z" 
  />
+
+ <circle
+                id="eye-empty"
+                    cx="100" cy="100" r="0"
+  />
               
 
                 
         </svg>
 
         </div>
+
+        
 
 
 <div class="page-container">
@@ -196,7 +206,20 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
                     <div class="header__date">
                         <p class="date-text">18-19.08.2023 r.</p>
 
-                        <div class="header__date--after"></div>
+                        <!-- <div class="header__date--after"></div> -->
+
+                        <!-- <svg width="430" height="150" xmlns="http://www.w3.org/2000/svg">
+
+                            <polygon points="600,20 200,20 220,0 620,0" fill="#F07D37" stroke="black" stroke-width="1" />
+                          
+                          
+                            <polygon points="620,0 620,68 600,88 600 20" fill="#F07D37" stroke="black" stroke-width="1" />
+                          
+                            <rect x="0" y="20" width="400" height="68" fill="#F0B735" stroke="black" stroke-width="1" />
+                          
+                          </svg> -->
+
+                          
                     </div>
                 </header>
 
@@ -246,7 +269,7 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
 
                     <div class="buy-ticket-section__inner">
                         <h4 class="buy-ticket-section__headline">KUP BILETY</h4>
-                        <img class="buy-ticket-section__logo" src="assets/SVG/biletomat-blk.svg">
+                        <img class="buy-ticket-section__logo" src="assets/SVG/biletomat_blk.svg">
                     </div>
                     
 
@@ -291,193 +314,6 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
     </footer>
 
     </div>
-    
-    
-    <script>    
-    
-    
-    const t2 = gsap.timeline()
-        .to("#pupil2", {
-            duration: 0.5,
-            repeat: -1,
-            yoyo: true,
-            attr: {
-                r: 11.5
-            }
-        })
-    
-        const tl = gsap.timeline()
-    .to("#eye-closed-top", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
-    }})
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
-    }}, "<")
-    .to(["#pupil1", "#pupil2"], {
-        duration: 0.3,
-        delay: 0.2,
-        repeat: 0,
-        attr:{
-            cx:"70"  
-    }})
-    .to("#eye-closed-top", {
-    duration: 0.15,
-        repeat: 0,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 90,50 30,100 Z"
-    }}, "<")
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 80,150 30,100 Z"  
-    }}, "<")
-    .to(["#pupil1", "#pupil2"], {
-        duration: 0.2,
-        repeat: 0,
-        attr:{
-            cy:"105", 
-            cx:"70"  
-    }},1.5)
-    .to("#eye-closed-top", {
-    duration: 0.15,
-        repeat: 0,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 100,60 30,100 Z"
-    }}, "<")
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"  
-    }}, "<")
-    .to("#eye-closed-top", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
-    }})
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
-    }}, "<")
-    .to(["#pupil1", "#pupil2"], {
-        duration: 0.3,
-        delay: 0.2,
-        repeat: 0,
-        attr:{
-            cy:"110", 
-            cx:"100"   
-    }})
-    .to("#eye-closed-top", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
-    }})
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 1,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
-    }}, "<")
-    .to(["#pupil1", "#pupil2"], {
-        duration: 0.3,
-        delay: 0.2,
-        repeat: 0,
-        attr:{
-            cy:"100", 
-            cx:"100"   
-    }})
-    .to("#eye-closed-top", {
-        duration: 0.15,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,20 170,100 C170,100 100,100 30,100 Z" 
-    }})
-    .to("#eye-closed-bottom", {
-        duration: 0.15,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,180 170,100 C170,100 100,100 30,100 Z"  
-    }}, "<")
-    .to(["#pupil1", "#pupil2", "#pupil3", "#eye1" ], {
-        duration: 0.2,
-        repeat: 0,
-        yoyo: true,
-        opacity: 0
-    })
-    .to("#eye-closed-top", {
-        duration: 0.2,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,100 170,100 C170,100 100,100 30,100 Z"
-    }})
-    .to("#eye-closed-bottom", {
-        duration: 0.2,
-        repeat: 0,
-        yoyo: true,
-        attr:{
-      d:"M30,100 Q100,100 170,100 C170,100 100,100 30,100 Z" 
-    }}, "<")
-    .to("#eye3", {
-    duration: 0.2,
-        repeat: 0,
-        attr:{
-      d:"M30,100 Q100,100 170,100 M30,100 Q100,100 170,100"
-    }}, "<")
-    .to(".eye-container", {
-    duration: 3,
-        repeat: 0,
-        css:{
-        '-webkit-mask-image': 'radial-gradient(circle at center, transparent 1000px, black 5000px)',
-        'mask-image': 'radial-gradient(circle at center, transparent 50px, black 51px)'
-    }, onComplete: function() {
-        const element = document.querySelector(".eye-container");
-      element.parentNode.removeChild(element);
-    }})
 
-    
-    const timeline2 = gsap.timeline()
-    .to("#note1", {
-        duration: 4,
-        repeat: -1,
-        x: 45,
-        y: -35,
-        width: 12
-
-    })
-    .to("#note2", {
-        duration: 4,
-        repeat: -1,
-        x: 25,
-        y: -35,
-        width: 12
-    }, ">")
-    
-    
-    
-    
-    
-    </script>
 </body>
 </html>

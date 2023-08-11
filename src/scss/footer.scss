@@ -1,0 +1,25 @@
+/* footer.scss */ 
+
+.footer-container {
+    
+    background-color: white;
+    position: relative;
+    padding: 15px 20px;
+    padding-inline-start: 0px;
+    border-top: 1.5px solid black;
+    
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-weight: 1000;
+    
+    &__link {
+        color: white;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        text-decoration: none;
+
+    }
+}

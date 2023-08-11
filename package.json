@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch scss --exec \"sass src/scss/styles.scss src/css/styles.css\"",
+    "dev": "nodemon --watch scss --exec \"sass src/scss/main.scss src/css/styles.css\"",
     "dev2": "browser-sync start --server 'src' --files 'src'",
     "build": "npx tsc",
-    "sass-dev": "sass src/scss/styles.scss src/css/styles.css "
+    "sass-dev": "sass src/scss/*.scss src/css/styles.css "
   },
   "author": "Michal Czaplinski",
   "license": "ISC",
