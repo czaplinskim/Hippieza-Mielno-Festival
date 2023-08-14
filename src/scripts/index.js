@@ -56,7 +56,6 @@ const pathTwo = [
     { x: 0, y: 0 },
 ]
 
-
 t1.to(flyingMushroom1, {
     duration: 40,
     ease: "linear",
