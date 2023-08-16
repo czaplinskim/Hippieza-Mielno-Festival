@@ -67,6 +67,7 @@ t1.to(flyingMushroom1, {
     }
 })
 
+
 t2.to(flyingMushroom2, {
     duration: 40,
     ease: "linear",
