@@ -282,12 +282,8 @@ css:{
 onComplete: function() {
 
 
-  
-
-
 }
 })
-
 
 
 const backgroundAudio = document.getElementById("backgroundAudio")
