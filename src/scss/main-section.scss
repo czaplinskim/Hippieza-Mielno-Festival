@@ -378,18 +378,8 @@
         width: 500px !important;
      }
    
-    .footer-menu {
-        flex-wrap: wrap;
-        line-height: 3;
-        text-align: center;
-        justify-content: center;
 
-        &__item {
-            width: 100%;
-        }
-    }
     
-
 
 }
 
@@ -466,18 +456,14 @@
 
     }
 
-    .footer-menu {
 
-        &__item {
-            width: 80% !important;
-        }
-    }
 
     .header {
 
         &__logo {
             width: 400px !important;
         } 
+        
     }
     .date-text {
         font-size: 24px !important;

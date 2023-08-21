@@ -5,6 +5,8 @@ window.onbeforeunload = function () {
 
 
 
+
+
 gsap.registerPlugin(MotionPathPlugin);
 
 const cloudToMove = document.querySelector("#cloudToMove")
@@ -269,14 +271,67 @@ onComplete: function() {
   const element = document.querySelector(".eye-container");
   element.parentNode.removeChild(element);
 
+  
+
 }})
 .to("body", {
   repeat: 0,
 css:{
 'overflow-y': 'auto',
+},
+onComplete: function() {
+
+
+  
+
+
 }
 })
 
+
+
+const backgroundAudio = document.getElementById("backgroundAudio")
+const soundButton = document.getElementById("soundButton")
+
+soundButton.addEventListener("click", function() {
+
+
+if(backgroundAudio.paused) {
+  
+  const timeline3 = gsap.timeline()
+  .to("#note1", {
+  duration: 0.5,
+  opacity: 1,
+  onStart: function() {
+    backgroundAudio.play()
+  }
+  })
+  .to("#note2", {
+    duration: 0.5,
+    opacity: 1
+  }, "<")
+
+
+} else  {
+  
+  const timeline4 = gsap.timeline()
+.to("#note1", {
+duration: 0.5,
+opacity: 0,
+onStart: function() {
+  backgroundAudio.pause()
+}
+})
+.to("#note2", {
+  duration: 0.5,
+  opacity: 0
+}, "<")
+
+  
+}
+
+
+})
 
 
 const timeline2 = gsap.timeline()
@@ -286,7 +341,6 @@ repeat: -1,
 x: 45,
 y: -35,
 width: 12
-
 })
 .to("#note2", {
 duration: 4,
@@ -295,6 +349,9 @@ x: 25,
 y: -35,
 width: 12
 }, ">")
+
+
+
 
 
 

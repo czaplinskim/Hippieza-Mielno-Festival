@@ -3,95 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIPPIEZA Mielno Festival</title>
+    <title>HIPPIEZA Mielno Festival 2023</title>
     <link href="css/styles.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/SVG/mushroom.svg">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script src="scripts/index.js" type="module"></script>
-
-    <style>
-
-
-
-
-
-        .eye-container {
-            position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(0, rgba(23, 173, 209, 1) 50%, rgba(0, 10, 120, 1) 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
-    z-index: 3;
-    -webkit-mask-image: radial-gradient(circle at center, transparent 0px, black 0px);
-    mask-image: radial-gradient(circle at center, transparent 0px, black 0px);
-
-}
-
-      
-        #eye-empty {
-          fill: none;
-          stroke: black;
-          stroke-width: 10;
-        }
-        
-        #eye1 {
-          fill:#FBE7CF;
-          stroke: black;
-          stroke-width: 1;
-        }
-        
-        #eye2 {
-          fill: #3FA396;
-          stroke: black;
-          stroke-width: 1;
-        }
-        
-        #eye3 {
-            fill: #F88D3A;
-            stroke: black;
-            stroke-width: 1;
-        }
-        
-        #pupil1 {
-            fill: #3FA396;;
-            stroke: black;
-            stroke-width: 1;
-        
-        }
-        
-        #pupil2 {
-            fill: 000000;
-            stroke: black;
-            stroke-width: 1;
-        
-        }
-        
-        #pupil3 {
-            fill: #FBE7CF;
-            stroke: black;
-            stroke-width: 1;
-        
-        }
-        
-        #eye-closed-top, #eye-closed-bottom {
-            fill:  #3FA396;
-            stroke: black;
-            stroke-width: 1;
-        }
-        
-            </style>
     
 </head>
 <body>
 
-    <audio src="assets/audio/tapes.mp3"></audio>
+    <audio autoplay id="backgroundAudio" src="assets/audio/tapes.mp3"></audio>
 
     <div class="eye-container">
 
@@ -180,7 +103,7 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
         <nav class="navbar-container">
 
             <div class="sound-button">
-                <div class="sound-button-container">
+                <div id="soundButton" class="sound-button-container">
                 <img src="assets/SVG/speaker.svg" class="sound-button__speaker" />
                 <img src="assets/SVG/speaker_cloud.svg" class="sound-button__speaker-cloud" />
                 <img src="assets/SVG/note_1.svg" id="note1" class="sound-button__note-1" />
@@ -206,18 +129,6 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
                     <div class="header__date">
                         <p class="date-text">18-19.08.2023 r.</p>
 
-                        <!-- <div class="header__date--after"></div> -->
-
-                        <!-- <svg width="430" height="150" xmlns="http://www.w3.org/2000/svg">
-
-                            <polygon points="600,20 200,20 220,0 620,0" fill="#F07D37" stroke="black" stroke-width="1" />
-                          
-                          
-                            <polygon points="620,0 620,68 600,88 600 20" fill="#F07D37" stroke="black" stroke-width="1" />
-                          
-                            <rect x="0" y="20" width="400" height="68" fill="#F0B735" stroke="black" stroke-width="1" />
-                          
-                          </svg> -->
 
                           
                     </div>
@@ -247,7 +158,7 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
 
             <section class="right-section">
 
-                <div class="social-media-section">
+                <a href="https://www.facebook.com/hippiezafestival" target="_blank" class="social-media-section">
 
                     <div class="social-media-section__dark-shape"></div>
                     <div class="social-media-section__blue-shape">
@@ -263,9 +174,9 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
 
                     </div>
 
-                </div>
+                </a>
 
-                <div class="buy-ticket-section">
+                <a href="https://www.biletomat.pl/bilety/hippieza-festival-mielno-13791/" target="_blank" class="buy-ticket-section">
 
                     <div class="buy-ticket-section__inner">
                         <h4 class="buy-ticket-section__headline">KUP BILETY</h4>
@@ -278,7 +189,7 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
 
                     
 
-                </div>
+                </a>
 
                 
             
@@ -306,9 +217,9 @@ d="M30,100 Q100,180 170,100 C170,100 100,150 30,100 Z"
     <footer class="footer-container">
 
         <ul class="footer-menu">
-            <li class="footer-menu__item"><a href="#" class="footer-menu__link">REGULAMIN</a></li>
-            <li class="footer-menu__item"><a href="#" class="footer-menu__link">julia@hippieza.com</a></li>
-            <li class="footer-menu__item"><a href="#" class="footer-menu__link">ORGANIZATOREM FESTIWALU JEST CENTRUM KULTURY W MIELNIE</a></li>
+            <li class="footer-menu__item"><a href="assets/docs/regulamin.pdf" class="footer-menu__link" target="_blank">REGULAMIN</a></li>
+            <li class="footer-menu__item"><a href="mailto: julia@hippieza.com" target="_blank" class="footer-menu__link">julia@hippieza.com</a></li>
+            <li class="footer-menu__item"><a href="http://www.ckm.mielno.pl" class="footer-menu__link" target="_blank">ORGANIZATOREM FESTIWALU JEST CENTRUM KULTURY W MIELNIE</a></li>
         </ul>
 
     </footer>
