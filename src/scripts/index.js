@@ -290,6 +290,7 @@ const soundButton = document.getElementById("soundButton")
 
 soundButton.addEventListener("click", function() {
 
+  
 if(backgroundAudio.paused) {
   
   const timeline3 = gsap.timeline()
