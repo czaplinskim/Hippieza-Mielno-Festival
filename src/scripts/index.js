@@ -1,18 +1,22 @@
 import animateGradientColorsListner from "./backgroundAnimation.js";
 import { movingCloud, flyingMushroomOne, flyingMushroomTwo } from "./movingElementsAnimations.js";
+import { initializeSoundButton } from "./backgroundSound.js"
+
+gsap.registerPlugin(MotionPathPlugin);
 
 window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
-animateGradientColorsListner
+initializeSoundButton()
+animateGradientColorsListner()
 movingCloud
-flyingMushroomOne
-flyingMushroomTwo
+flyingMushroomOne()
+flyingMushroomTwo()
 
 
 
-gsap.registerPlugin(MotionPathPlugin);
+
 
 
 
@@ -257,109 +261,111 @@ const tl = gsap
     onComplete: function () {},
   });
 
-const backgroundAudio = document.getElementById("backgroundAudio");
-const soundButton = document.getElementById("soundButton");
 
-soundButton.addEventListener("click", function () {
+
+// const backgroundAudio = document.getElementById("backgroundAudio");
+// const soundButton = document.getElementById("soundButton");
+
+// soundButton.addEventListener("click", function () {
 
   
-  if (backgroundAudio.paused) {
+//   if (backgroundAudio.paused) {
 
 
-          // Funkcja do asynchronicznego ustawiania atrybutu src elementu audio
-          async function loadAudio() {
-            const audioUrl =  'assets/audio/tapes.mp3'; // Wprowadź właściwy link do pliku audio
+//           // Funkcja do asynchronicznego ustawiania atrybutu src elementu audio
+//           async function loadAudio() {
+//             const audioUrl =  'assets/audio/tapes.mp3'; // Wprowadź właściwy link do pliku audio
 
-            console.log('async')
+//             console.log('async')
             
-            try {
-              // Pobranie danych audio za pomocą Fetch lub innej metody
+//             try {
+//               // Pobranie danych audio za pomocą Fetch lub innej metody
 
-              console.log('async2')
+//               console.log('async2')
 
-              const response = await fetch(audioUrl);
-              const audioBlob = await response.blob();
+//               const response = await fetch(audioUrl);
+//               const audioBlob = await response.blob();
 
-              console.log('async3')
+//               console.log('async3')
               
-              // Tworzenie URL obiektu blob do ustawienia jako src
-              const blobUrl = URL.createObjectURL(audioBlob);
+//               // Tworzenie URL obiektu blob do ustawienia jako src
+//               const blobUrl = URL.createObjectURL(audioBlob);
               
-              // Ustawienie src dla elementu audio
-              backgroundAudio.src = blobUrl;
-              backgroundAudio.play();
+//               // Ustawienie src dla elementu audio
+//               backgroundAudio.src = blobUrl;
+//               backgroundAudio.play();
 
-              const timeline2 = gsap
-  .timeline()
-  .to("#note1", {
-    duration: 4,
-    repeat: -1,
-    x: 45,
-    y: -35,
-    width: 12,
-  })
-  .to(
-    "#note2",
-    {
-      duration: 4,
-      repeat: -1,
-      x: 25,
-      y: -35,
-      width: 12,
-    },
-    "<",
-  );
+//               const timeline2 = gsap
+//   .timeline()
+//   .to("#note1", {
+//     duration: 4,
+//     repeat: -1,
+//     x: 45,
+//     y: -35,
+//     width: 12,
+//   })
+//   .to(
+//     "#note2",
+//     {
+//       duration: 4,
+//       repeat: -1,
+//       x: 25,
+//       y: -35,
+//       width: 12,
+//     },
+//     "<",
+//   );
 
 
 
-              const timeline3 = gsap
-              .timeline()
-              .to("#note1", {
-                duration: 0.5,
-                opacity: 1,
-              })
-              .to(
-                "#note2",
-                {
-                  duration: 0.5,
-                  opacity: 1,
-                },
-                "<",
-              );
+//               const timeline3 = gsap
+//               .timeline()
+//               .to("#note1", {
+//                 duration: 0.5,
+//                 opacity: 1,
+//               })
+//               .to(
+//                 "#note2",
+//                 {
+//                   duration: 0.5,
+//                   opacity: 1,
+//                 },
+//                 "<",
+//               );
 
               
             
   
 
-            } catch (error) {
-              console.error('Błąd podczas ładowania audio:', error);
-            }
-          }
+//             } catch (error) {
+//               console.error('Błąd podczas ładowania audio:', error);
+//             }
+//           }
           
-  loadAudio()
+//   loadAudio()
 
-  } else {
+//   } else {
 
-    console.log('played')
+//     console.log('played')
 
-    const timeline4 = gsap
-      .timeline()
-      .to("#note1", {
-        duration: 0.5,
-        opacity: 0,
-        onStart: function () {
-          backgroundAudio.pause();
-        },
-      })
-      .to(
-        "#note2",
-        {
-          duration: 0.5,
-          opacity: 0,
-        },
-        "<",
-      );
-  }
-});
+//     const timeline4 = gsap
+//       .timeline()
+//       .to("#note1", {
+//         duration: 0.5,
+//         opacity: 0,
+//         onStart: function () {
+//           backgroundAudio.pause();
+//         },
+//       })
+//       .to(
+//         "#note2",
+//         {
+//           duration: 0.5,
+//           opacity: 0,
+//         },
+//         "<",
+//       );
+//   }
+// });
 
 

@@ -4,13 +4,13 @@ gsap.registerPlugin(MotionPathPlugin);
 
 const cloudToMove = document.querySelector('#cloudToMove');
 
-export const movingCloud = gsap.to(cloudToMove, {
+export const movingCloud = () => { return  gsap.to(cloudToMove, {
   x: 400,
   ease: 'none',
   repeat: -1,
   yoyo: true,
   duration: 6,
-});
+}); }
 
 // Mushrooms
 
@@ -65,5 +65,5 @@ const createMotionTimeline = (element, path) => {
   });
 };
 
-export const flyingMushroomOne = createMotionTimeline(flyingMushroom1, pathOne);
-export const flyingMushroomTwo = createMotionTimeline(flyingMushroom2, pathTwo);
+export const flyingMushroomOne = () => { return createMotionTimeline(flyingMushroom1, pathOne) }
+export const flyingMushroomTwo = () => { return createMotionTimeline(flyingMushroom2, pathTwo)}

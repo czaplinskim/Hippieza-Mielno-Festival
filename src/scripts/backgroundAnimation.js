@@ -16,7 +16,5 @@ function animateGradientColors() {
 
   }
 
-const animateGradientColorsListner = checkbox.addEventListener('change', animateGradientColors);
-
-export default animateGradientColorsListner;
+export const animateGradientColorsListner = () => { return checkbox.addEventListener('change', animateGradientColors) }
 
