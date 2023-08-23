@@ -4,7 +4,7 @@
 /* mixins.scss */
 .eye-container {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -25,25 +25,25 @@
 }
 
 #eye1 {
-  fill: #FBE7CF;
+  fill: #fbe7cf;
   stroke: black;
   stroke-width: 1;
 }
 
 #eye2 {
-  fill: #3FA396;
+  fill: #3fa396;
   stroke: black;
   stroke-width: 1;
 }
 
 #eye3 {
-  fill: #F88D3A;
+  fill: #f88d3a;
   stroke: black;
   stroke-width: 1;
 }
 
 #pupil1 {
-  fill: #3FA396;
+  fill: #3fa396;
   stroke: black;
   stroke-width: 1;
 }
@@ -55,25 +55,37 @@
 }
 
 #pupil3 {
-  fill: #FBE7CF;
+  fill: #fbe7cf;
   stroke: black;
   stroke-width: 1;
 }
 
-#eye-closed-top, #eye-closed-bottom {
-  fill: #3FA396;
+#eye-closed-top,
+#eye-closed-bottom {
+  fill: #3fa396;
   stroke: black;
   stroke-width: 1;
 }
 
 /* body.scss */
+html {
+  background-color: #17add1;
+}
+
+body {
+  position: fixed;
+  overflow-y: hidden;
+}
+
 body {
   background: rgb(241, 223, 102);
   background: linear-gradient(0deg, rgb(241, 223, 102) 50%, rgb(83, 155, 210) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.body-wrapper {
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .noise {
@@ -149,14 +161,13 @@ body {
   align-items: center;
 }
 .header__logo {
-  width: 600px;
+  width: 600px !important;
   position: relative;
   left: 10px;
 }
 .header__date {
   margin: 20px 0px;
   top: 0;
-  left: -7px;
   position: relative;
   display: inline-block;
   padding: 6px 50px;
@@ -183,7 +194,10 @@ body {
   padding-inline-start: 0;
   margin: 40px 0px;
 }
-.lineup-section__headliners li a, .lineup-section__headliners span, .lineup-section__small-acts li a, .lineup-section__small-acts span, .lineup-section__guest li a, .lineup-section__guest span {
+.lineup-section__headliners li a,
+.lineup-section__headliners span, .lineup-section__small-acts li a,
+.lineup-section__small-acts span, .lineup-section__guest li a,
+.lineup-section__guest span {
   text-decoration: none;
   color: white;
   font-weight: 1000;
@@ -215,7 +229,6 @@ body {
   position: relative;
   bottom: 260px;
   height: 550px;
-  overflow-x: clip;
 }
 .field-section__deer-element {
   position: relative;
@@ -227,6 +240,10 @@ body {
 
 .right-section {
   flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buy-ticket-section {
@@ -235,9 +252,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 200px;
   top: 350px;
-  z-index: 1;
+  left: 25px;
+  z-index: 2;
   transform: rotate(8deg);
 }
 .buy-ticket-section:hover {
@@ -293,26 +310,26 @@ body {
     transform: translateY(0) rotate(8deg);
   }
   50% {
-    transform: translateY(-40px) rotate(8deg);
-    z-index: -1;
+    transform: translateY(-60px) rotate(8deg);
+    z-index: 0;
   }
   100% {
     transform: translateY(0px) rotate(8deg);
-    z-index: -1;
+    z-index: 0;
   }
 }
 @keyframes buy-ticket-section-reverse-move {
   0% {
     transform: translateY(0) rotate(8deg);
-    z-index: -1;
+    z-index: 0;
   }
   50% {
-    transform: translateY(-40px) rotate(8deg);
-    z-index: -1;
+    transform: translateY(-60px) rotate(8deg);
+    z-index: 0;
   }
   100% {
     transform: translateY(0px) rotate(8deg);
-    z-index: 1;
+    z-index: 2;
   }
 }
 .social-media-section {
@@ -322,10 +339,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 150px;
   top: 570px;
   transform: rotate(-5deg);
   transition: transform 0.5s ease;
+  z-index: 1;
 }
 .social-media-section__inner {
   display: flex;
@@ -367,7 +384,7 @@ body {
 }
 .social-media-section__blue-shape {
   position: absolute;
-  background-color: #93D8FF;
+  background-color: #93d8ff;
   width: 85%;
   height: 70%;
   border-radius: 100px;
@@ -375,7 +392,7 @@ body {
 }
 .social-media-section__dark-shape {
   position: absolute;
-  background-color: #17ADD1;
+  background-color: #17add1;
   width: 100%;
   height: 100%;
   border-radius: 100px;
@@ -404,18 +421,19 @@ body {
     flex: auto !important;
   }
   .social-media-section {
-    left: 25% !important;
-    top: 225px !important;
+    top: 245px !important;
     width: 420px !important;
     height: 180px !important;
   }
   .buy-ticket-section {
     width: 400px !important;
-    left: 35% !important;
     top: 0px !important;
   }
 }
 @media only screen and (max-width: 992px) {
+  .main-container {
+    padding: 30px !important;
+  }
   .header__logo {
     width: 500px !important;
   }
@@ -424,14 +442,11 @@ body {
   .lineup-section__headliners {
     font-size: 42px !important;
   }
-  .social-media-section {
-    left: 15% !important;
-  }
-  .buy-ticket-section {
-    left: 25% !important;
-  }
 }
 @media only screen and (max-width: 640px) {
+  .header__date {
+    padding: 3px 30px;
+  }
   .lineup-section__headliners {
     font-size: 36px !important;
   }
@@ -441,42 +456,45 @@ body {
   .lineup-section__guest {
     font-size: 36px !important;
   }
-  .social-media-section {
-    left: 15% !important;
-  }
-  .buy-ticket-section {
-    left: 25% !important;
-  }
 }
 @media only screen and (max-width: 600px) {
   .lineup-section__headliners {
-    font-size: 32px !important;
+    font-size: 36px !important;
+    line-height: 1;
+  }
+  .lineup-section__headliners li {
+    margin: 25px 0;
   }
   .lineup-section__small-acts li {
-    font-size: 28px !important;
+    font-size: 26px !important;
+  }
+  .lineup-section__small-acts li:not(:last-child)::after {
+    margin: 0px 2px 0 2px;
   }
   .lineup-section__guest {
     font-size: 36px !important;
   }
   .header__logo {
-    width: 400px !important;
+    width: 95% !important;
+    max-width: 500px;
   }
   .date-text {
-    font-size: 24px !important;
+    font-size: 26px !important;
     text-shadow: -0.6px 0 black, 0 0.6px black, 0.6px 0 black, 0 -0.6px black !important;
   }
   .buy-ticket-section {
     width: 350px !important;
-    left: 20% !important;
   }
   .social-media-section {
     top: 210px !important;
     width: 360px !important;
     height: 160px !important;
-    left: 10% !important;
   }
 }
 /* moving-elements.scss */
+.flying-mushroom {
+  position: relative;
+}
 .flying-mushroom__element {
   position: absolute;
   width: 40px;
@@ -514,6 +532,7 @@ body {
 /* sound button */
 .sound-button {
   height: 70px;
+  cursor: pointer;
 }
 .sound-button-container {
   position: absolute;
@@ -528,12 +547,14 @@ body {
   top: -15px;
 }
 .sound-button__note-1 {
+  opacity: 0;
   position: relative;
   width: 2px;
   top: -45px;
   left: 75px;
 }
 .sound-button__note-2 {
+  opacity: 0;
   position: relative;
   width: 3px;
   top: -50px;

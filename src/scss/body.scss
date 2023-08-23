@@ -1,19 +1,30 @@
 /* body.scss */
+html {
+  background-color: #17add1;
+}
 
 body {
-    @include gradient-background(0, $day-color-first, $day-color-second);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
- 
+	position:fixed;
+	overflow-y: hidden;
+}
+
+body {
+  @include gradient-background(0, $day-color-first, $day-color-second);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+.body-wrapper {
+  overflow-x: hidden;
+}
+
 .noise {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    opacity: 45%;
-    background-image: url("../assets/noise.png");
-    z-index: 3;
-  }
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 45%;
+  background-image: url("../assets/noise.png");
+  z-index: 3;
+}

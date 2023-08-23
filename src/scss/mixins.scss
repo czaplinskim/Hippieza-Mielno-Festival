@@ -1,7 +1,10 @@
 /* mixins.scss */
 
 @mixin gradient-background($degree, $first-color, $second-color) {
-    background: $first-color;
-    background: linear-gradient(#{$degree}deg, $first-color 50%, $second-color 100%);
-  }
-  
+  background: $first-color;
+  background: linear-gradient(
+    #{$degree}deg,
+    $first-color 50%,
+    $second-color 100%
+  );
+}

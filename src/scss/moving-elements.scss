@@ -2,36 +2,35 @@
 
 .flying-mushroom {
 
-    &__element {
-        position: absolute;
-        width: 40px;
-        overflow: hidden;
-
-        &--left {
-            top: 550px;
-            left: -150px;
-        }
-
-        &--right {
-            top: 850px;
-            right: 150px;
-        }
-    }
+  position: relative;
   
+  &__element {
+    position: absolute;
+    width: 40px;
+    overflow: hidden;
+
+    &--left {
+      top: 550px;
+      left: -150px;
+    }
+
+    &--right {
+      top: 850px;
+      right: 150px;
+    }
+  }
 }
 
 .moving-cloud-container {
+  position: relative;
 
-    position: relative; 
-
-    &__element {
-
-        position: absolute;
-        left: 900px;
-        top: 270px;
-        width: 400px;
-        stroke: black;
-        stroke-width: 1px;
-        fill: white;
-    }
+  &__element {
+    position: absolute;
+    left: 900px;
+    top: 270px;
+    width: 400px;
+    stroke: black;
+    stroke-width: 1px;
+    fill: white;
+  }
 }

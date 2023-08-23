@@ -1,17 +1,18 @@
 /* navbar.scss */
 
 .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* sound button */
 
 $sound-button-speaker-width: 33px;
 
 .sound-button {
   height: 70px;
+  cursor: pointer;
 
   &-container {
     position: absolute;
@@ -29,6 +30,7 @@ $sound-button-speaker-width: 33px;
   }
 
   &__note-1 {
+    opacity: 0;
     position: relative;
     width: 2px;
     top: -45px;
@@ -36,6 +38,7 @@ $sound-button-speaker-width: 33px;
   }
 
   &__note-2 {
+    opacity: 0;
     position: relative;
     width: 3px;
     top: -50px;
@@ -43,103 +46,131 @@ $sound-button-speaker-width: 33px;
   }
 }
 
-
 /* day night switcher */
 
 $switcher-width: 80px;
 
 #toggle_checkbox {
-    display: none;
+  display: none;
+}
 
-  }
-  
 label {
-    border: 1px solid black;
-    display: block;
-    width: $switcher-width;
-    height: 30px;
-    background-color: rgb(241, 223, 102);
-    background-image: linear-gradient(45deg, rgb(0, 10, 120), 50%, rgb(23, 173, 209) 100%);
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-image 5s ease;
-    overflow: hidden;
-    margin-bottom: 8px;
-  }
-  
-  input:checked ~ label {
-      
-      background-image: linear-gradient(45deg, rgb(241, 223, 102), 50%, rgb(83, 155, 210) 100%);
-  }
+  border: 1px solid black;
+  display: block;
+  width: $switcher-width;
+  height: 30px;
+  background-color: rgb(241, 223, 102);
+  background-image: linear-gradient(
+    45deg,
+    rgb(0, 10, 120),
+    50%,
+    rgb(23, 173, 209) 100%
+  );
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-image 5s ease;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
 
-  
-  label::before {
-    display: block;
-    position: relative;
-    background-size:cover;
-    background-image: url("data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='17.5' cy='17.5' r='17' fill='%23FABC39' stroke='black'/%3E%3C/svg%3E%0A");    background-size: cover; 
-    content: '';
-    top: calc($switcher-width / 20);
-    left: calc($switcher-width / 15);
-    height: calc($switcher-width / 4);
-    width: calc($switcher-width / 4);
+input:checked ~ label {
+  background-image: linear-gradient(
+    45deg,
+    rgb(241, 223, 102),
+    50%,
+    rgb(83, 155, 210) 100%
+  );
+}
 
-    }
+label::before {
+  display: block;
+  position: relative;
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='17.5' cy='17.5' r='17' fill='%23FABC39' stroke='black'/%3E%3C/svg%3E%0A");
+  background-size: cover;
+  content: "";
+  top: calc($switcher-width / 20);
+  left: calc($switcher-width / 15);
+  height: calc($switcher-width / 4);
+  width: calc($switcher-width / 4);
+}
 
-    label::after {
-        display: block;
-        position: relative;
-        background-size:cover;
-        background-image:  url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
-        content: '';
-        top: -16px;
-        left: 53px;
-        height: calc($switcher-width / 4);
-        width: calc($switcher-width / 4);
-      }
+label::after {
+  display: block;
+  position: relative;
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24.8663 2C26.362 4.49985 27.222 7.4235 27.222 10.5486C27.222 19.7569 19.7569 27.222 10.5486 27.222C7.42389 27.222 4.49985 26.362 2 24.8663C4.91165 29.7331 10.234 32.9914 16.3177 32.9914C25.5264 32.9914 32.991 25.5264 32.991 16.318C32.991 10.2344 29.7327 4.91203 24.8663 2Z' fill='%23FABC39' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E");
+  content: "";
+  top: -16px;
+  left: 53px;
+  height: calc($switcher-width / 4);
+  width: calc($switcher-width / 4);
+}
 
 input:not(:checked) ~ label::before {
-    animation: sun-up 2s ease-out;
-    animation-fill-mode: forwards;
+  animation: sun-up 2s ease-out;
+  animation-fill-mode: forwards;
 }
 
-  
-  input:checked ~ label::before {
-    animation: sun-down 2s ease-out;
-    animation-fill-mode: forwards;
-
-  }
-
-  input:not(:checked)  ~ label::after {
-    animation: moon-up 2s ease-out;
-    animation-fill-mode: forwards;
+input:checked ~ label::before {
+  animation: sun-down 2s ease-out;
+  animation-fill-mode: forwards;
 }
 
-  input:checked ~ label::after {
-    animation: moon-down 2s ease-out;
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes sun-down {
-    0% { top: calc($switcher-width / 20); }
-    10% { top: 3px; }
-    100% { top: 90px; }
-  }
-  
-  @keyframes moon-down {
-    0% { top: -82px; }
-    75% { top: -17px }
-    100% { top: -16px }
-  }
+input:not(:checked) ~ label::after {
+  animation: moon-up 2s ease-out;
+  animation-fill-mode: forwards;
+}
 
-  @keyframes sun-up {
-    0% { top: 90px; }
-    80% { top: 3px; }
-    100% { top: calc($switcher-width / 20); }
-  }
+input:checked ~ label::after {
+  animation: moon-down 2s ease-out;
+  animation-fill-mode: forwards;
+}
 
-  @keyframes moon-up {
-    0% { top: -16px }
-    10% { top: -17px }
-    100% { top: -82px; }
+@keyframes sun-down {
+  0% {
+    top: calc($switcher-width / 20);
   }
+  10% {
+    top: 3px;
+  }
+  100% {
+    top: 90px;
+  }
+}
+
+@keyframes moon-down {
+  0% {
+    top: -82px;
+  }
+  75% {
+    top: -17px;
+  }
+  100% {
+    top: -16px;
+  }
+}
+
+@keyframes sun-up {
+  0% {
+    top: 90px;
+  }
+  80% {
+    top: 3px;
+  }
+  100% {
+    top: calc($switcher-width / 20);
+  }
+}
+
+@keyframes moon-up {
+  0% {
+    top: -16px;
+  }
+  10% {
+    top: -17px;
+  }
+  100% {
+    top: -82px;
+  }
+}
