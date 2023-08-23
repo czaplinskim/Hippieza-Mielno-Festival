@@ -289,8 +289,46 @@ soundButton.addEventListener("click", function () {
               backgroundAudio.src = blobUrl;
               backgroundAudio.play();
 
+              const timeline2 = gsap
+  .timeline()
+  .to("#note1", {
+    duration: 4,
+    repeat: -1,
+    x: 45,
+    y: -35,
+    width: 12,
+  })
+  .to(
+    "#note2",
+    {
+      duration: 4,
+      repeat: -1,
+      x: 25,
+      y: -35,
+      width: 12,
+    },
+    "<",
+  );
 
 
+
+              const timeline3 = gsap
+              .timeline()
+              .to("#note1", {
+                duration: 0.5,
+                opacity: 1,
+              })
+              .to(
+                "#note2",
+                {
+                  duration: 0.5,
+                  opacity: 1,
+                },
+                "<",
+              );
+
+              
+            
   
 
             } catch (error) {
@@ -299,21 +337,6 @@ soundButton.addEventListener("click", function () {
           }
           
   loadAudio()
-
-  const timeline3 = gsap
-  .timeline()
-  .to("#note1", {
-    duration: 0.5,
-    opacity: 1,
-  })
-  .to(
-    "#note2",
-    {
-      duration: 0.5,
-      opacity: 1,
-    },
-    "<",
-  );
 
   } else {
 
@@ -339,23 +362,4 @@ soundButton.addEventListener("click", function () {
   }
 });
 
-const timeline2 = gsap
-  .timeline()
-  .to("#note1", {
-    duration: 4,
-    repeat: -1,
-    x: 45,
-    y: -35,
-    width: 12,
-  })
-  .to(
-    "#note2",
-    {
-      duration: 4,
-      repeat: -1,
-      x: 25,
-      y: -35,
-      width: 12,
-    },
-    ">",
-  );
+
