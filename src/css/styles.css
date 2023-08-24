@@ -253,7 +253,7 @@ body {
   justify-content: center;
   align-items: center;
   top: 350px;
-  left: 25px;
+  left: 12.5px;
   z-index: 2;
   transform: rotate(8deg);
 }
@@ -340,6 +340,7 @@ body {
   justify-content: center;
   align-items: center;
   top: 570px;
+  right: 12.5px;
   transform: rotate(-5deg);
   transition: transform 0.5s ease;
   z-index: 1;

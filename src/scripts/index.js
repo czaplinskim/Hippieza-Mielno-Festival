@@ -1,4 +1,4 @@
-import animateGradientColorsListner from "./backgroundAnimation.js";
+import { animateGradientColorsListner } from "./backgroundAnimation.js";
 import { movingCloud, flyingMushroomOne, flyingMushroomTwo } from "./movingElementsAnimations.js";
 import { initializeSoundButton } from "./backgroundSound.js"
 
@@ -8,20 +8,14 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
-initializeSoundButton()
-animateGradientColorsListner()
-movingCloud
+movingCloud()
 flyingMushroomOne()
 flyingMushroomTwo()
+initializeSoundButton()
+animateGradientColorsListner()
 
 
 
-
-
-
-
-
-// START ANIMATION
 
 const browserWidth = window.innerWidth;
 
@@ -242,7 +236,6 @@ const tl = gsap
     repeat: 0,
     css: {
       "-webkit-mask-image":
-        // `radial-gradient(circle at center, transparent ${browserWidth / 1.5}px, black ${browserWidth / 1.5}px)`,
         `radial-gradient(circle at center, transparent 100%, black 100%)`,
       "mask-image":
         `radial-gradient(circle at center, transparent 100%, black 100%)`,
@@ -261,111 +254,5 @@ const tl = gsap
     onComplete: function () {},
   });
 
-
-
-// const backgroundAudio = document.getElementById("backgroundAudio");
-// const soundButton = document.getElementById("soundButton");
-
-// soundButton.addEventListener("click", function () {
-
-  
-//   if (backgroundAudio.paused) {
-
-
-//           // Funkcja do asynchronicznego ustawiania atrybutu src elementu audio
-//           async function loadAudio() {
-//             const audioUrl =  'assets/audio/tapes.mp3'; // Wprowadź właściwy link do pliku audio
-
-//             console.log('async')
-            
-//             try {
-//               // Pobranie danych audio za pomocą Fetch lub innej metody
-
-//               console.log('async2')
-
-//               const response = await fetch(audioUrl);
-//               const audioBlob = await response.blob();
-
-//               console.log('async3')
-              
-//               // Tworzenie URL obiektu blob do ustawienia jako src
-//               const blobUrl = URL.createObjectURL(audioBlob);
-              
-//               // Ustawienie src dla elementu audio
-//               backgroundAudio.src = blobUrl;
-//               backgroundAudio.play();
-
-//               const timeline2 = gsap
-//   .timeline()
-//   .to("#note1", {
-//     duration: 4,
-//     repeat: -1,
-//     x: 45,
-//     y: -35,
-//     width: 12,
-//   })
-//   .to(
-//     "#note2",
-//     {
-//       duration: 4,
-//       repeat: -1,
-//       x: 25,
-//       y: -35,
-//       width: 12,
-//     },
-//     "<",
-//   );
-
-
-
-//               const timeline3 = gsap
-//               .timeline()
-//               .to("#note1", {
-//                 duration: 0.5,
-//                 opacity: 1,
-//               })
-//               .to(
-//                 "#note2",
-//                 {
-//                   duration: 0.5,
-//                   opacity: 1,
-//                 },
-//                 "<",
-//               );
-
-              
-            
-  
-
-//             } catch (error) {
-//               console.error('Błąd podczas ładowania audio:', error);
-//             }
-//           }
-          
-//   loadAudio()
-
-//   } else {
-
-//     console.log('played')
-
-//     const timeline4 = gsap
-//       .timeline()
-//       .to("#note1", {
-//         duration: 0.5,
-//         opacity: 0,
-//         onStart: function () {
-//           backgroundAudio.pause();
-//         },
-//       })
-//       .to(
-//         "#note2",
-//         {
-//           duration: 0.5,
-//           opacity: 0,
-//         },
-//         "<",
-//       );
-//   }
-// });
 
 
