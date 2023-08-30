@@ -374,16 +374,12 @@
       font-size: 42px !important;
     }
   }
-
 }
 
 @media only screen and (max-width: 640px) {
-
   .header {
     &__date {
-
       padding: 3px 30px;
-
     }
   }
   .lineup-section {
@@ -399,7 +395,6 @@
       font-size: 36px !important;
     }
   }
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -419,7 +414,6 @@
       &:not(:last-child)::after {
         margin: 0px 2px 0 2px;
       }
-
     }
 
     &__guest {
@@ -444,13 +438,11 @@
 
   .buy-ticket-section {
     width: 350px !important;
-
   }
 
   .social-media-section {
     top: 210px !important;
     width: 360px !important;
     height: 160px !important;
-
   }
 }

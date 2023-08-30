@@ -4,15 +4,14 @@ html {
 }
 
 body {
-	position:fixed;
-	overflow-y: hidden;
+  position: fixed;
+  overflow-y: hidden;
 }
 
 body {
   @include gradient-background(0, $day-color-first, $day-color-second);
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 .body-wrapper {
